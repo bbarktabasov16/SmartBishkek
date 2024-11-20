@@ -1,3 +1,4 @@
+
 import Css from './Styles/App.module.css';
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
       <div className={Css.FooterBar}>
         
       </div>
+
     </div>
   );
 }

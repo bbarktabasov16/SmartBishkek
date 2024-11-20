@@ -1,0 +1,65 @@
+.container {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	height: 100vh;
+}
+
+.welcome_text {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-direction: column;
+	height: 70px;
+}
+
+.title {
+	color: white;
+	font-size: 30px;
+	font-weight: 600;
+	font-family: sans-serif;
+	letter-spacing: 2px;
+}
+
+.description {
+	color: white;
+	font-size: 20px;
+	font-family: sans-serif;
+	letter-spacing: 2px;
+}
+
+
+.ava img {
+	border-radius: 50%;
+	width: 200px;
+	border: 5px solid #4F45E4;
+	box-shadow: 0 0 50px #4F45E4;
+	animation: 5s ava-animate infinite;
+}
+
+.next {
+	width: 50px;
+	height: 50px;
+	background-color: #212121;
+	border-radius: 5px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.next svg {
+	color: white;
+}
+
+@keyframes ava-animate {
+	0% {
+		box-shadow: 0 0 50px #4F45E4;
+	}
+	50% {
+		box-shadow: none;
+	}
+	100% {
+		box-shadow: 0 0 50px #4F45E4;
+	}
+}
