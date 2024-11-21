@@ -3,6 +3,7 @@ import { getAnalytics } from "firebase/analytics";
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage"; // Добавляем Storage
+import { getDatabase } from "firebase/database"; // Добавляем Realtime Database
 
 // Firebase configuration
 const firebaseConfig = {
@@ -22,3 +23,4 @@ export const auth = getAuth(app); // Экспортируем аутентифи
 export const provider = new GoogleAuthProvider(); // Провайдер Google
 export const db = getFirestore(app); // Экспортируем Firestore
 export const storage = getStorage(app); // Экспортируем Storage
+export const rtdb = getDatabase(app); // Добавляем Realtime Database
