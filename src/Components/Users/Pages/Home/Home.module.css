@@ -1,6 +1,6 @@
 .backCon {
 	background-color: #fff;
-	height: 100vh;
+	height: 130vh;
 	width: 100vw;
 	display: flex;
 	justify-content: center;
@@ -38,6 +38,12 @@
 	cursor: pointer;
 	border-radius: 10px;
 	transition: 0.2s all;
+	display: flex;
+	align-items: center;
+}
+
+.icon svg {
+	margin-right: 20px;
 }
 
 .icon:hover {
@@ -50,6 +56,15 @@
 
 .content {
 	padding: 30px 50px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	overflow: scroll;
+	height: 115vh;
+}
+
+.content::-webkit-scrollbar {
+	display: none;
 }
 
 .header {
@@ -60,4 +75,111 @@
 
 .header img {
 	width: 50px;
+	cursor: pointer;
+}
+
+.explore {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	height: 270px;
+}
+
+.explore h2 {
+	font-size: 30px;
+}
+
+.cards {
+	display: flex;
+	justify-content: space-between;
+	overflow: scroll;
+}
+
+.cards::-webkit-scrollbar {
+	display: none;
+}
+
+.card {
+	margin-right: 20px;
+	min-width: 200px;
+	width: 200px;
+	height: 200px;
+	background-color: grey;
+	border-radius: 5px;
+	padding: 5px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	cursor: pointer;
+}
+
+.card_header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.card_header svg {
+	color: #fff;
+}
+
+.tag {
+	width: 100px;
+	height: 25px;
+	border-radius: 5px;
+	background-color: #fff;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.description {
+	color: #fff;
+}
+
+.adventures {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	height: 130px;
+}
+
+.categories {
+	display: flex;
+	justify-content: space-between;
+	width: 400px;
+}
+
+.categories button {
+	width: 75px;
+	height: 75px;
+	background-color: #D3D3D3;
+	border: none;
+	outline: none;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: 0.2s all;
+}
+
+.categories button:hover {
+	background-color: #b7b7b7;
+}
+
+.categories button svg {
+	margin-bottom: 5px;
+}
+
+.adventures h2 {
+	font-size: 30px;
+}
+
+.recommended {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	height: 250px;
+}
+
+.recommended h2 {
+	font-size: 30px;
 }
