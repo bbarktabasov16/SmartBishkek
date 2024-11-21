@@ -40,7 +40,7 @@ const Home = () => {
     <div className={cl.backCon}>
       <div className={cl.container}>
         <div className={cl.Navbar}>
-          <div className={cl.logo}>in312</div>
+          <div className={cl.logo}>Tourist312</div>
           <div className={cl.icons}>
             <div className={cl.icon}>
               <FaHome /> Home

@@ -6,18 +6,19 @@ import Home from "./Components/Users/Pages/Home/Home";
 import Welcome from "./Components/Users/Pages/Welcome/Welcome";
 import { AuthProvider } from "./AuthContext";
 import ProtectedRoute from "./ProtectedRoute";
+import Profile from "./Components/Users/Pages/Profile/Profile";
 
 function App() {
   return (
     <AuthProvider>
       <Router basename="/">
         <Routes>
-          {/* Открытые маршруты */}
+
           <Route path="/" element={<Welcome />} />
           <Route path="/auth" element={<Auth />} />
           <Route path="/reg" element={<Reg />} />
 
-          {/* Защищенные маршруты */}
+
           <Route
             path="/home"
             element={
@@ -29,6 +30,7 @@ function App() {
         </Routes>
       </Router>
     </AuthProvider>
+		// <Profile />
   );
 }
 

@@ -23,7 +23,7 @@ const Welcome = () => {
           <img src={img1} alt="City 312 app interface" />
         </div>
         <div className={cl.welcome_text}>
-          <div className={cl.title}>in312</div>
+          <div className={cl.title}>Tourist312</div>
           <div className={cl.description}>Погрузись в мир туризма</div>
         </div>
         <div className={cl.next} onClick={handleJoin}>
