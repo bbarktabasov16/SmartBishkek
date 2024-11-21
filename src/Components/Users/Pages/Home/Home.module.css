@@ -100,6 +100,7 @@
 	/* justify-content: space-between; */
 	overflow: scroll;
 	gap: 10px;
+	/* margin-top: 10px; */
 }
 
 .cards::-webkit-scrollbar {
@@ -111,7 +112,9 @@
 	min-width: 200px;
 	width: 200px;
 	height: 200px;
-	background-color: grey;
+	/* background-color: grey; */
+	background-size: cover;
+
 	border-radius: 5px;
 	padding: 5px;
 	display: flex;
@@ -157,9 +160,10 @@
 	width: 100%;
 	flex-wrap: wrap;
 	gap: 10px;
+	margin-top: 10px;
 }
 
-.categories button {
+/* .categories button {
 	width: 75px;
 	height: 75px;
 	background-color: #D3D3D3;
@@ -179,7 +183,37 @@
 
 .categories button svg {
 	margin-bottom: 5px;
-}
+} */
+
+
+.categories button {
+	position: relative;
+	display: inline-block;
+	margin: 15px;
+	width: 100px;
+	height: 100px;
+	/* padding: 15px 30px; */
+	text-align: center;
+	font-size: 18px;
+	letter-spacing: 1px;
+	text-decoration: none;
+	color: #725AC1;
+	background: transparent;
+	cursor: pointer;
+	transition: ease-out 0.2s;
+	border: 2px solid #725AC1;
+	border-radius: 10px;
+	box-shadow: inset 0 0 0 0 #725AC1;
+  }
+  
+  .categories button:hover {
+	color: white;
+	box-shadow: inset 0 -100px 0 0 #725AC1;
+  }
+  
+  .categories button:active {
+	transform: scale(0.9);
+  }
 
 .adventures h2 {
 	font-size: 30px;
@@ -189,11 +223,13 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	height: 250px;
+	height: max-content;
 }
 
 .recommended h2 {
 	font-size: 30px;
+	padding-bottom: 20px;
+
 }
 
 .explore, .adventures, .recommended {
@@ -259,6 +295,13 @@
 	.content{
 		order: -1;
 	}
+	.categories{
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+
+	}
+	
 	.Navbar{
 		/* border-top: 1px solid; */
 		order: 2;
@@ -292,6 +335,9 @@
 		justify-content: center;
 		align-items: center;
 	}
+	.categories button{
+		width: 150px;
+	}
 	.icon:hover{
 		background-color: #d3d3d300;
 	}
@@ -303,3 +349,14 @@
 	}
 }
 
+
+@media (max-width:380px) {
+	.categories{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	.categories button{
+		width: 220px;
+	}
+}

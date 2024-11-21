@@ -4,38 +4,52 @@ import { FaHome, FaMapMarked, FaSearchLocation, FaMoneyBill } from "react-icons/
 import { CiLogout } from "react-icons/ci";
 import { IoPerson } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
-import { ref, getDownloadURL } from "firebase/storage";
 import defaultAvatar from "../../../../images/free-icon-user-847969.png"; // Импорт дефолтной картинки
-import { auth, storage } from "../../../../firebase";
+import { auth } from "../../../../firebase";
 import { signOut } from "firebase/auth";
 
 const Profile = () => {
-	const [userData, setUserData] = useState([])
- 
-
-
-
-  useEffect(()=>{
-    setUserData(JSON.parse(localStorage.getItem('userData')))
-  },[])
-
-	const handleLogout = async (navigate) => {
-    try {
-      await signOut(auth);
-      navigate("/");
-      localStorage.removeItem('userData')
-      localStorage.removeItem('userData2')
-
-    } catch (error) {
-      console.log("ошибка при выходе");
-    }
-  };
+  const [userData, setUserData] = useState(null); // null для состояния до загрузки
+  const [loading, setLoading] = useState(true); // Флаг загрузки
 
   const navigate = useNavigate();
 
+  useEffect(() => {
+    // Извлекаем данные из localStorage
+    const storedUserData = localStorage.getItem("userData");
+    if (storedUserData) {
+      setUserData(JSON.parse(storedUserData));
+    } else {
+      console.warn("Пользовательские данные отсутствуют в localStorage");
+    }
+    setLoading(false); // Завершаем загрузку
+  }, []);
 
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      localStorage.removeItem("userData");
+      localStorage.removeItem("userData2");
+      navigate("/");
+    } catch (error) {
+      console.error("Ошибка при выходе:", error);
+    }
+  };
 
+  if (loading) {
+    // Показываем спиннер или сообщение при загрузке данных
+    return <p>Loading profile...</p>;
+  }
 
+  if (!userData) {
+    // Если данные не загружены, показываем ошибку или перенаправляем
+    return (
+      <div>
+        <p>User data not found. Please log in again.</p>
+        <button onClick={() => navigate("/")}>Go to Login</button>
+      </div>
+    );
+  }
 
   return (
     <div className={cl.backCon}>
@@ -56,7 +70,7 @@ const Profile = () => {
               <IoPerson /> Profile
             </div>
           </div>
-          <div className={cl.logout} onClick={() => handleLogout(navigate)}>
+          <div className={cl.logout} onClick={handleLogout}>
             <CiLogout />
             Exit
           </div>
@@ -65,12 +79,16 @@ const Profile = () => {
           <div className={cl.title}>Profile</div>
           <div className={cl.ava}>
             <div className={cl.img_ava}>
-              <img src={userData.avatar || defaultAvatar} alt="User Avatar" className={cl.image} />
+              <img
+                src={userData.avatar || defaultAvatar}
+                alt="User Avatar"
+                className={cl.image}
+              />
             </div>
-            <div className={cl.username}>{userData.name}</div>
+            <div className={cl.username}>{userData.name || "Unknown User"}</div>
           </div>
           <div className="balance">
-            {userData.tokens} <FaMoneyBill />
+            {userData.tokens || 0} <FaMoneyBill />
           </div>
         </div>
       </div>
