@@ -77,6 +77,7 @@ function Reg() {
         }
     };
     return (
+        <div className={Css.backCon}>
         <div className={Css.Block}>
             <div className={Css.loginContainer}>
                 <div className={Css.loginCard}>
@@ -123,6 +124,7 @@ function Reg() {
                     </p>
                 </div>
             </div>
+        </div>
         </div>
     )
 }
