@@ -17,6 +17,23 @@ import { useNavigate } from "react-router-dom";
 import { signOut } from "firebase/auth";
 import { auth } from "../../../../firebase";
 import { ref } from "firebase/storage";
+import p1 from '../../../../images/3.png'
+import p2 from '../../../../images/1.png'
+import p3 from '../../../../images/2.png'
+import p4 from '../../../../images/4.png'
+import p5 from '../../../../images/5.png'
+
+
+import r1 from '../../../../images/rec/1.png'
+import r2 from '../../../../images/rec/2.png'
+import r3 from '../../../../images/rec/3.png'
+import r4 from '../../../../images/rec/4.png'
+import r5 from '../../../../images/rec/5.png'
+import r6 from '../../../../images/rec/6.png'
+
+
+
+
 
 const Home = () => {
   const [currentTime, setCurrentTime] = useState("");
@@ -108,33 +125,54 @@ const Home = () => {
           </div>
 
           <section className={cl.explore}>
-            <h2>Explore nearby eco</h2>
+            <h2>Места поблизости</h2>
             <div className={cl.cards}>
-              <div className={cl.card}>
+              <div className={cl.card} style={{backgroundImage:`url(${p1})`}}>
                 <div className={cl.card_header}>
-                  <div className={cl.tag}>Park visit</div>
+                  <div className={cl.tag}>Посетить</div>
                   <FaTree />
                 </div>
                 <div className={cl.description}>
-                  <h3>Nature Reserve</h3>
-                  <p>Next eco event: May 23</p>
+                  <h3>Музей Великой Пустоты</h3>
+                  <p>Открыто: 09:00 - 18:00</p>
                 </div>
               </div>
-              <div className={cl.card}>
+              <div className={cl.card} style={{backgroundImage:`url(${p2})`}}>
                 <div className={cl.card_header}>
-                  <div className={cl.tag}>Park visit</div>
+                  <div className={cl.tag}>Посетить</div>
                   <FaTree />
                 </div>
                 <div className={cl.description}>
-                  <h3>Nature Reserve</h3>
-                  <p>Next eco event: May 23</p>
+                  <h3>Мечеть Мустафа</h3>
+                  <p>Открыто: 05:00 - 23:00</p>
+                </div>
+              </div>
+              
+              <div className={cl.card} style={{backgroundImage:`url(${p4})`}}>
+                <div className={cl.card_header}>
+                  <div className={cl.tag}>Посетить</div>
+                  <FaTree />
+                </div>
+                <div className={cl.description}>
+                  <h3>SPACENTER</h3>
+                  <p>Открыто: 09:00 - 23:00</p>
+                </div>
+              </div>
+              <div className={cl.card} style={{backgroundImage:`url(${p5})`}}>
+                <div className={cl.card_header}>
+                  <div className={cl.tag}>Посетить</div>
+                  <FaTree />
+                </div>
+                <div className={cl.description}>
+                  <h3>Шашлык центр</h3>
+                  <p>Открыто: 09:00 - 23:00</p>
                 </div>
               </div>
             </div>
           </section>
 
           <section className={cl.adventures}>
-            <h2>Green Adventures</h2>
+            <h2>Приключения</h2>
             <div className={cl.categories}>
               {categories.map((category, index) => (
                 <button
@@ -148,16 +186,66 @@ const Home = () => {
           </section>
 
           <section className={cl.recommended}>
-            <h2>Recommended</h2>
+            <h2>Рекомендованные места</h2>
             <div className={cl.cards}>
-              <div className={cl.card}>
+              <div className={cl.card} style={{backgroundImage:`url(${r1})`}}>
                 <div className={cl.card_header}>
-                  <div className={cl.tag}>Park visit</div>
+                  <div className={cl.tag}>Посетить</div>
                   <FaTree />
                 </div>
                 <div className={cl.description}>
-                  <h3>Nature Reserve</h3>
-                  <p>Next eco event: May 23</p>
+                  <h3>Монумент Дружбы народов</h3>
+                  <p>Открыто: круглосуточно</p>
+                </div>
+              </div>
+              <div className={cl.card} style={{backgroundImage:`url(${r2})`}}>
+                <div className={cl.card_header}>
+                  <div className={cl.tag}>Посетить</div>
+                  <FaTree />
+                </div>
+                <div className={cl.description}>
+                  <h3>Парк победы</h3>
+                  <p>Открыто: круглосуточно</p>
+                </div>
+              </div>
+              <div className={cl.card} style={{backgroundImage:`url(${r3})`}}>
+                <div className={cl.card_header}>
+                  <div className={cl.tag}>Посетить</div>
+                  <FaTree />
+                </div>
+                <div className={cl.description}>
+                  <h3>Панорама</h3>
+                  <p>Открыто: круглосуточно</p>
+                </div>
+              </div>
+              <div className={cl.card} style={{backgroundImage:`url(${r4})`}}>
+                <div className={cl.card_header}>
+                  <div className={cl.tag}>Посетить</div>
+                  <FaTree />
+                </div>
+                <div className={cl.description}>
+                  <h3>Дубовый парк</h3>
+                  <p>Открыто: круглосуточно</p>
+                </div>
+              </div>
+              <div className={cl.card} style={{backgroundImage:`url(${r5})`}}>
+                <div className={cl.card_header}>
+                  <div className={cl.tag}>Посетить</div>
+                  <FaTree />
+                </div>
+                <div className={cl.description}>
+                  <h3>Площадь победы</h3>
+                  <p>Открыто: круглосуточно</p>
+                </div>
+              </div>
+              <div className={cl.card} style={{backgroundImage:`url(${r6})`}}>
+                <div className={cl.card_header}>
+                  <div className={cl.tag}>Посетить</div>
+                  <FaTree />
+                </div>
+                <div className={cl.description}>
+                  <h3>Ынтымак парк</h3>
+                  <p>Открыто: круглосуточно</p>
                 </div>
               </div>
             </div>

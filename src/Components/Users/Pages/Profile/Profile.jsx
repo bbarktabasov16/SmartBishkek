@@ -76,7 +76,7 @@ const Profile = () => {
               <IoPerson /> <li>Profile </li>
             </div>
           </div>
-          <div className={cl.logout} onClick={() => handleLogout(navigate)}>
+          <div className={cl.logout} onClick={handleLogout}>
             <CiLogout />
             <li>Exit</li>
           </div>
