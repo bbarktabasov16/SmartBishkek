@@ -8,7 +8,7 @@ const ProtectedRoute = ({ children }) => {
 
   if (loading) return <div>Loading...</div>; // Пока идет проверка состояния
 
-  return user ? children : <Navigate to="/auth" replace />; // Если нет пользователя, перенаправляем на страницу входа
+  return user ? children : <Navigate to="/" replace />; // Если нет пользователя, перенаправляем на страницу входа
 };
 
 export default ProtectedRoute;
