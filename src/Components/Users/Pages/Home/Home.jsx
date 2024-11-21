@@ -21,17 +21,18 @@ import { auth } from "../../../../firebase";
 const Home = () => {
   const [currentTime, setCurrentTime] = useState("");
 
+  const navigate = useNavigate()
 
   const handleLogout = async (navigate) => {
     try {
       await signOut(auth);
       navigate("/");
     } catch (error) {
-console.log('ошибка при выходе')
+      console.log('ошибка при выходе')
     }
   };
 
-  const navigate = useNavigate()
+
   useEffect(() => {
     const updateTime = () => {
       const now = new Date();
@@ -56,25 +57,25 @@ console.log('ошибка при выходе')
     <div className={cl.backCon}>
       <div className={cl.container}>
         <div className={cl.Navbar}>
-          <div className={cl.logo}>Tourist312</div>
+          <div className={cl.logo}><span>Tourist</span><span>312</span></div>
           <div className={cl.icons}>
             <div className={cl.icon}>
-              <FaHome /> Home
+              <FaHome /><li>Home</li>
             </div>
             <div className={cl.icon}>
-              <FaSearchLocation /> Search
+              <FaSearchLocation /> <li>Search</li>
             </div>
             <div className={cl.icon}>
-              <FaMapMarked /> Map
+              <FaMapMarked />  <li>Map</li>
             </div>
             <div className={cl.icon}>
-              <IoPerson /> Profile
+              <IoPerson />  <li>Profile</li>
             </div>
           </div>
-					<div className={cl.logout} onClick={handleLogout}>
-						<CiLogout />
-						Exit
-					</div>
+          <div className={cl.logout} onClick={handleLogout}>
+            <CiLogout />
+            <li>Exit</li>
+          </div>
         </div>
 
         <div className={cl.content}>
@@ -106,116 +107,8 @@ console.log('ошибка при выходе')
                   <p>Next eco event: May 23</p>
                 </div>
               </div>
-              <div className={cl.card}>
-                <div className={cl.card_header}>
-                  <div className={cl.tag}>Park visit</div>
-                  <FaTree />
-                </div>
-                <div className={cl.description}>
-                  <h3>Nature Reserve</h3>
-                  <p>Next eco event: May 23</p>
-                </div>
-              </div>
-              <div className={cl.card}>
-                <div className={cl.card_header}>
-                  <div className={cl.tag}>Park visit</div>
-                  <FaTree />
-                </div>
-                <div className={cl.description}>
-                  <h3>Nature Reserve</h3>
-                  <p>Next eco event: May 23</p>
-                </div>
-              </div>
-              <div className={cl.card}>
-                <div className={cl.card_header}>
-                  <div className={cl.tag}>Park visit</div>
-                  <FaTree />
-                </div>
-                <div className={cl.description}>
-                  <h3>Nature Reserve</h3>
-                  <p>Next eco event: May 23</p>
-                </div>
-              </div>
-              <div className={cl.card}>
-                <div className={cl.card_header}>
-                  <div className={cl.tag}>Park visit</div>
-                  <FaTree />
-                </div>
-                <div className={cl.description}>
-                  <h3>Nature Reserve</h3>
-                  <p>Next eco event: May 23</p>
-                </div>
-              </div>
-              <div className={cl.card}>
-                <div className={cl.card_header}>
-                  <div className={cl.tag}>Park visit</div>
-                  <FaTree />
-                </div>
-                <div className={cl.description}>
-                  <h3>Nature Reserve</h3>
-                  <p>Next eco event: May 23</p>
-                </div>
-              </div>
-              <div className={cl.card}>
-                <div className={cl.card_header}>
-                  <div className={cl.tag}>Park visit</div>
-                  <FaTree />
-                </div>
-                <div className={cl.description}>
-                  <h3>Nature Reserve</h3>
-                  <p>Next eco event: May 23</p>
-                </div>
-              </div>
-              <div className={cl.card}>
-                <div className={cl.card_header}>
-                  <div className={cl.tag}>Park visit</div>
-                  <FaTree />
-                </div>
-                <div className={cl.description}>
-                  <h3>Nature Reserve</h3>
-                  <p>Next eco event: May 23</p>
-                </div>
-              </div>
-              <div className={cl.card}>
-                <div className={cl.card_header}>
-                  <div className={cl.tag}>Park visit</div>
-                  <FaTree />
-                </div>
-                <div className={cl.description}>
-                  <h3>Nature Reserve</h3>
-                  <p>Next eco event: May 23</p>
-                </div>
-              </div>
-              <div className={cl.card}>
-                <div className={cl.card_header}>
-                  <div className={cl.tag}>Park visit</div>
-                  <FaTree />
-                </div>
-                <div className={cl.description}>
-                  <h3>Nature Reserve</h3>
-                  <p>Next eco event: May 23</p>
-                </div>
-              </div>
-              <div className={cl.card}>
-                <div className={cl.card_header}>
-                  <div className={cl.tag}>Park visit</div>
-                  <FaTree />
-                </div>
-                <div className={cl.description}>
-                  <h3>Nature Reserve</h3>
-                  <p>Next eco event: May 23</p>
-                </div>
-              </div>
-              <div className={cl.card}>
-                <div className={cl.card_header}>
-                  <div className={cl.tag}>Park visit</div>
-                  <FaTree />
-                </div>
-                <div className={cl.description}>
-                  <h3>Nature Reserve</h3>
-                  <p>Next eco event: May 23</p>
-                </div>
-              </div>
+
+
             </div>
           </section>
 
@@ -243,76 +136,9 @@ console.log('ошибка при выходе')
                   <p>Next eco event: May 23</p>
                 </div>
               </div>
-              <div className={cl.card}>
-                <div className={cl.card_header}>
-                  <div className={cl.tag}>Park visit</div>
-                  <FaTree />
-                </div>
-                <div className={cl.description}>
-                  <h3>Nature Reserve</h3>
-                  <p>Next eco event: May 23</p>
-                </div>
-              </div>
-              <div className={cl.card}>
-                <div className={cl.card_header}>
-                  <div className={cl.tag}>Park visit</div>
-                  <FaTree />
-                </div>
-                <div className={cl.description}>
-                  <h3>Nature Reserve</h3>
-                  <p>Next eco event: May 23</p>
-                </div>
-              </div>
-              <div className={cl.card}>
-                <div className={cl.card_header}>
-                  <div className={cl.tag}>Park visit</div>
-                  <FaTree />
-                </div>
-                <div className={cl.description}>
-                  <h3>Nature Reserve</h3>
-                  <p>Next eco event: May 23</p>
-                </div>
-              </div>
-              <div className={cl.card}>
-                <div className={cl.card_header}>
-                  <div className={cl.tag}>Park visit</div>
-                  <FaTree />
-                </div>
-                <div className={cl.description}>
-                  <h3>Nature Reserve</h3>
-                  <p>Next eco event: May 23</p>
-                </div>
-              </div>
-              <div className={cl.card}>
-                <div className={cl.card_header}>
-                  <div className={cl.tag}>Park visit</div>
-                  <FaTree />
-                </div>
-                <div className={cl.description}>
-                  <h3>Nature Reserve</h3>
-                  <p>Next eco event: May 23</p>
-                </div>
-              </div>
-              <div className={cl.card}>
-                <div className={cl.card_header}>
-                  <div className={cl.tag}>Park visit</div>
-                  <FaTree />
-                </div>
-                <div className={cl.description}>
-                  <h3>Nature Reserve</h3>
-                  <p>Next eco event: May 23</p>
-                </div>
-              </div>
-              <div className={cl.card}>
-                <div className={cl.card_header}>
-                  <div className={cl.tag}>Park visit</div>
-                  <FaTree />
-                </div>
-                <div className={cl.description}>
-                  <h3>Nature Reserve</h3>
-                  <p>Next eco event: May 23</p>
-                </div>
-              </div>
+
+
+
             </div>
           </section>
         </div>
