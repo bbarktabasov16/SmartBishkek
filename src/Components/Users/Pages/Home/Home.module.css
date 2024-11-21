@@ -47,3 +47,17 @@
 .icon:nth-child(1) {
 	font-weight: 600;
 }
+
+.content {
+	padding: 30px 50px;
+}
+
+.header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.header img {
+	width: 50px;
+}

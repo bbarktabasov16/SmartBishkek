@@ -1,7 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import cl from "./Home.module.css";
+import user_img from "../../../../images/free-icon-user-847969.png"
+import { format } from 'date-fns';
 
 const Home = () => {
+
+	const [currentTime, setCurrentTime] = useState('');
+
+  useEffect(() => {
+    const updateTime = () => {
+      const now = new Date();
+      const formattedTime = format(now, "MMMM dd, HH:mm");
+      setCurrentTime(formattedTime);
+    };
+
+    updateTime();
+    const intervalId = setInterval(updateTime, 60000); 
+
+    return () => clearInterval(intervalId); 
+  }, []);
+
   return (
     <div className={cl.backCon}>
       <div className={cl.container}>
@@ -17,21 +35,18 @@ const Home = () => {
         </div>
 
         <div className={cl.content}>
-          <header className="header">
-            <h1>Home</h1>
-            <div className="user-info">
-              <p>Current time: June 20th, 8:25 PM</p>
+            <div className={cl.header}>
+              <p>Current time: {currentTime}</p>
               <img
-                src="/path/to/user-profile.jpg"
+                src={user_img}
                 alt="User Profile"
-                className="user-img"
+                className={cl.user_img}
               />
             </div>
-          </header>
 
-          <div className="search">
+          <div className={cl.search}>
             <input type="text" placeholder="Search location" />
-            <button className="refresh-btn">🔄</button>
+            <button className={cl.refresh_btn}>🔄</button>
           </div>
 
           <section className="explore">
