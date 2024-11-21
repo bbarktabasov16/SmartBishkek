@@ -74,19 +74,19 @@ const Home = () => {
             </div>
           
             <div className={cl.icon} onClick={() => navigate("/search")}>
-              <FaSearchLocation /> Search
+              <FaSearchLocation />  <li>Search</li>
 
             </div>
             <div className={cl.icon}>
               <FaMapMarked />  <li>Map</li>
             </div>
             <div className={cl.icon} onClick={() => navigate("/profile")}>
-              <IoPerson /> Profile
+              <IoPerson /> <li>Profile </li>
             </div>
           </div>
           <div className={cl.logout} onClick={() => handleLogout(navigate)}>
             <CiLogout />
-            Exit
+            <li>Exit</li>
           </div>
         </div>
 
