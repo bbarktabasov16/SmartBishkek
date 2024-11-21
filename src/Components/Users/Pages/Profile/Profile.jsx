@@ -1,26 +1,32 @@
 import React, { useEffect, useState } from "react";
 import cl from "./Profile.module.css";
-import { FaHome, FaMapMarked, FaSearchLocation, FaMoneyBill } from "react-icons/fa";
+import {
+  FaHome,
+  FaMapMarked,
+  FaSearchLocation,
+  FaMoneyBill,
+} from "react-icons/fa";
 import { CiLogout } from "react-icons/ci";
 import { IoPerson } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
-import defaultAvatar from "../../../../images/free-icon-user-847969.png"; // Импорт дефолтной картинки
+import defaultAvatar from "../../../../images/free-icon-user-847969.png";
 import { auth } from "../../../../firebase";
 import { signOut } from "firebase/auth";
 
 const Profile = () => {
-  const [userData, setUserData] = useState(null); // null для состояния до загрузки
+  const [userData, setUserData] = useState(null); // Начальное состояние null
   const [loading, setLoading] = useState(true); // Флаг загрузки
-
   const navigate = useNavigate();
 
   useEffect(() => {
     // Извлекаем данные из localStorage
     const storedUserData = localStorage.getItem("userData");
     if (storedUserData) {
-      setUserData(JSON.parse(storedUserData));
-    } else {
-      console.warn("Пользовательские данные отсутствуют в localStorage");
+      try {
+        setUserData(JSON.parse(storedUserData));
+      } catch (error) {
+        console.error("Ошибка при чтении userData из localStorage:", error);
+      }
     }
     setLoading(false); // Завершаем загрузку
   }, []);
@@ -36,43 +42,43 @@ const Profile = () => {
     }
   };
 
+  // Если данные загружаются, показываем индикатор загрузки
   if (loading) {
-    // Показываем спиннер или сообщение при загрузке данных
-    return <p>Loading profile...</p>;
+    return <div className={cl.loading}>Загрузка данных...</div>;
   }
 
+  // Если данные отсутствуют, отображаем сообщение
   if (!userData) {
-    // Если данные не загружены, показываем ошибку или перенаправляем
-    return (
-      <div>
-        <p>User data not found. Please log in again.</p>
-        <button onClick={() => navigate("/")}>Go to Login</button>
-      </div>
-    );
+    return <div className={cl.error}>Не удалось загрузить данные профиля.</div>;
   }
 
   return (
     <div className={cl.backCon}>
       <div className={cl.container}>
         <div className={cl.Navbar}>
-          <div className={cl.logo}>Tourist312</div>
+          <div className={cl.logo}>
+            <span>Tourist</span>
+            <span>312</span>
+          </div>
           <div className={cl.icons}>
             <div className={cl.icon} onClick={() => navigate("/home")}>
-              <FaHome /> Home
+              <FaHome />
+              <li>Home</li>
             </div>
+
             <div className={cl.icon} onClick={() => navigate("/search")}>
-              <FaSearchLocation /> Search
+              <FaSearchLocation /> <li>Search</li>
             </div>
-            <div className={cl.icon}>
-              <FaMapMarked /> Map
+            <div className={cl.icon} onClick={() => navigate("/map")}>
+              <FaMapMarked /> <li>Map</li>
             </div>
-            <div className={cl.icon}>
-              <IoPerson /> Profile
+            <div className={cl.icon} onClick={() => navigate("/profile")}>
+              <IoPerson /> <li>Profile </li>
             </div>
           </div>
           <div className={cl.logout} onClick={handleLogout}>
             <CiLogout />
-            Exit
+            <li>Exit</li>
           </div>
         </div>
         <div className={cl.content}>
@@ -85,10 +91,10 @@ const Profile = () => {
                 className={cl.image}
               />
             </div>
-            <div className={cl.username}>{userData.name || "Unknown User"}</div>
-          </div>
-          <div className="balance">
-            {userData.tokens || 0} <FaMoneyBill />
+            <div className={cl.username}>{userData.name || "Guest"}</div>
+            <div className={cl.balance}>
+              {userData.tokens || 0} <FaMoneyBill />
+            </div>
           </div>
         </div>
       </div>

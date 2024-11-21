@@ -9,6 +9,7 @@ import ProtectedRoute from "./ProtectedRoute";
 import Profile from "./Components/Users/Pages/Profile/Profile";
 import Search from "./Components/Users/Pages/Search/Search"
 import Scan from "./Components/Users/UI/Scan/Scan";
+import Map from "./Components/Users/Pages/Map/Map";
 
 function App() {
   return (
@@ -21,7 +22,7 @@ function App() {
           <Route path="/reg" element={<Reg />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/search" element={<Search />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/map" element={<Map />} />
           <Route path="/scan" element={<Scan />} />
 
 
