@@ -12,10 +12,26 @@ import { GiEcology } from "react-icons/gi";
 import { FaCompass } from "react-icons/fa";
 import { IoMdQrScanner } from "react-icons/io";
 import { CiLogout } from "react-icons/ci";
+import { useNavigate } from "react-router-dom";
+import { signOut } from "firebase/auth";
+import { auth } from "../../../../firebase";
+
+
 
 const Home = () => {
   const [currentTime, setCurrentTime] = useState("");
 
+
+  const handleLogout = async (navigate) => {
+    try {
+      await signOut(auth);
+      navigate("/");
+    } catch (error) {
+console.log('ошибка при выходе')
+    }
+  };
+
+  const navigate = useNavigate()
   useEffect(() => {
     const updateTime = () => {
       const now = new Date();
@@ -55,7 +71,7 @@ const Home = () => {
               <IoPerson /> Profile
             </div>
           </div>
-					<div className={cl.logout}>
+					<div className={cl.logout} onClick={handleLogout}>
 						<CiLogout />
 						Exit
 					</div>
