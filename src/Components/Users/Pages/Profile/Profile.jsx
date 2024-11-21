@@ -10,13 +10,22 @@ import { auth, storage } from "../../../../firebase";
 import { signOut } from "firebase/auth";
 
 const Profile = () => {
-	const [userData, setUserData] = useState(JSON.parse(localStorage.getItem('userData')))
-  const [imageUrl, setImageUrl] = useState(userData.photoURL);
+	const [userData, setUserData] = useState([])
+ 
+
+
+
+  useEffect(()=>{
+    setUserData(JSON.parse(localStorage.getItem('userData')))
+  },[])
 
 	const handleLogout = async (navigate) => {
     try {
       await signOut(auth);
       navigate("/");
+      localStorage.removeItem('userData')
+      localStorage.removeItem('userData2')
+
     } catch (error) {
       console.log("ошибка при выходе");
     }
@@ -25,20 +34,8 @@ const Profile = () => {
   const navigate = useNavigate();
 
 
-  // useEffect(() => {
-  //   // Ссылка на изображение в Firebase Storage
-  //   const imageRef = ref(storage, "avatars/bekzat-avatar.jpg"); // Замените путь на свой
 
-  //   // Получение ссылки для загрузки
-  //   getDownloadURL(imageRef)
-  //     .then((url) => {
-  //       setImageUrl(url); // Сохранение ссылки в состоянии
-  //     })
-  //     .catch((error) => {
-  //       console.warn("Error fetching image URL, using default avatar:", error);
-  //       setImageUrl(defaultAvatar); // Устанавливаем дефолтную картинку в случае ошибки
-  //     });
-  // }, []);
+
 
   return (
     <div className={cl.backCon}>
@@ -68,12 +65,12 @@ const Profile = () => {
           <div className={cl.title}>Profile</div>
           <div className={cl.ava}>
             <div className={cl.img_ava}>
-              <img src={imageUrl || defaultAvatar} alt="User Avatar" className={cl.image} />
+              <img src={userData.avatar || defaultAvatar} alt="User Avatar" className={cl.image} />
             </div>
-            <div className={cl.username}>{userData.displayName}</div>
+            <div className={cl.username}>{userData.name}</div>
           </div>
           <div className="balance">
-            0 <FaMoneyBill />
+            {userData.tokens} <FaMoneyBill />
           </div>
         </div>
       </div>

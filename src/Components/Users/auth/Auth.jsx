@@ -6,9 +6,8 @@ import { signInWithEmailAndPassword } from 'firebase/auth';
 import { signInWithPopup } from 'firebase/auth';
 import { Link, useNavigate } from 'react-router-dom';
 import { doc, setDoc, getDoc } from 'firebase/firestore';
-import { db } from '../../../firebase';  // Путь к вашему экземпляру Firestore
+import { db } from '../../../firebase'; // Путь к вашему экземпляру Firestore
 import { useAuth } from "../../../AuthContext";
-
 
 function Auth() {
   const [email, setEmail] = useState('');
@@ -19,39 +18,49 @@ function Auth() {
 
   useEffect(() => {
     if (user) {
-      // Если пользователь авторизован, перенаправляем его на домашнюю страницу
       navigate("/home", { replace: true });
     }
   }, [user, navigate]);
 
-  // Функция для регистрации с помощью email и пароля
+  // Получение данных пользователя из Firestore
+  const fetchUserData = async (uid) => {
+    try {
+      const userRef = doc(db, 'users', uid);
+      const userDoc = await getDoc(userRef);
+      if (userDoc.exists()) {
+        const userData = userDoc.data();
+        localStorage.setItem('userData', JSON.stringify(userData));
+      }
+    } catch (error) {
+      console.error("Error fetching user data:", error);
+    }
+  };
+
+  // Функция для входа с помощью email и пароля
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      await signInWithEmailAndPassword(auth, email, password);
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      fetchUserData(userCredential.user.uid);
       setEmail('');
       setPassword('');
       setError('');
       navigate('/home');
-			localStorage.setItem('userData', user)
     } catch (error) {
-      setError(error.message); // Если произошла ошибка, выводим ее
+      setError(error.message);
     }
   };
 
   // Функция для входа через Google
   const handleGoogleLogin = async () => {
     try {
-      // Открываем окно для входа через Google
       const result = await signInWithPopup(auth, provider);
       const user = result.user;
 
-      // Проверяем, существует ли пользователь в Firestore
       const userRef = doc(db, 'users', user.uid);
       const userDoc = await getDoc(userRef);
 
       if (!userDoc.exists()) {
-        // Если пользователя нет в базе данных, создаем новый документ
         await setDoc(userRef, {
           name: user.displayName,
           email: user.email,
@@ -59,21 +68,20 @@ function Auth() {
           role: 'user',
           avatar: user.photoURL || false,
           level: 0,
-          achievements: [], 
-          password:password,
+          achievements: [],
         });
       }
 
+      await fetchUserData(user.uid);
       setError('');
-      navigate('/home');  // Переход на главную страницу после входа
+      navigate('/home');
     } catch (error) {
-      setError(error.message); // Если произошла ошибка, выводим ее
+      setError(error.message);
     }
   };
 
   return (
     <div className={Css.backCon}>
-
       <div className={Css.Block}>
         <div className={Css.loginContainer}>
           <div className={Css.loginCard}>
