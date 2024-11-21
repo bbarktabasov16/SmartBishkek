@@ -1,4 +1,6 @@
 * {
+	--second: #4F45E4;
+	--bgc:#171717;
 	padding: 0;
 	margin: 0;
 	box-sizing: border-box;
@@ -11,3 +13,5 @@ body {
 	align-items: center;
 	height: 100vh;
 }
+
+
