@@ -3,7 +3,7 @@
 	flex-direction: column;
 	justify-content: space-around;
 	align-items: center;
-	height: 100vh;
+	height: 70vh;
 }
 
 .welcome_text {
@@ -15,7 +15,7 @@
 }
 
 .title {
-	color: white;
+	color: #000;
 	font-size: 30px;
 	font-weight: 600;
 	font-family: sans-serif;
@@ -23,7 +23,7 @@
 }
 
 .description {
-	color: white;
+	color: #000;
 	font-size: 20px;
 	font-family: sans-serif;
 	letter-spacing: 2px;
@@ -33,9 +33,12 @@
 .ava img {
 	border-radius: 50%;
 	width: 200px;
-	border: 5px solid var(--second);
-	box-shadow: 0 0 50px var(--second);
-	animation: 5s ava-animate infinite;
+	/* border: 5px solid #4F45E4; */
+	transition: 0.3s ease-in-out;
+}
+
+.ava.active img {
+	animation: 2s ava-animate forwards;
 }
 
 
@@ -43,25 +46,27 @@
 .next {
 	width: 50px;
 	height: 50px;
-	background-color: #212121;
+	background-color: #000;
 	border-radius: 5px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	cursor: pointer;
+	transition: 0.2s all;
+	color: #fff;
+	padding: 10px 150px;
 }
 
-.next svg {
-	color: white;
+.next:hover {
+	background-color: #212121;
 }
 
 @keyframes ava-animate {
-	0% {
-		box-shadow: 0 0 50px #4F45E4;
+	from {
+		box-shadow: 0 0 0 0 #fff;
 	}
-	50% {
-		box-shadow: none;
-	}
-	100% {
-		box-shadow: 0 0 50px #4F45E4;
+
+	to {
+		box-shadow: 0 0 0 2000px #fff;
 	}
 }
