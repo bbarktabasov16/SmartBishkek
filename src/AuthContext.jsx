@@ -12,6 +12,7 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
+			localStorage.setItem('userData', JSON.stringify(currentUser))
       setLoading(false); // Завершаем загрузку после получения состояния
     });
     return () => unsubscribe(); // Отписываемся при размонтировании

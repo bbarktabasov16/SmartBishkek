@@ -69,6 +69,10 @@
 	display: none;
 }
 
+.user_img {
+	border-radius: 50%;
+}
+
 .header {
 	display: flex;
 	justify-content: space-between;
