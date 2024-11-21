@@ -59,7 +59,8 @@ function Auth() {
           role: 'user',
           avatar: user.photoURL || false,
           level: 0,
-          achievements: []
+          achievements: [], 
+          password:password,
         });
       }
 
