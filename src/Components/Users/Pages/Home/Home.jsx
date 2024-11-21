@@ -11,6 +11,7 @@ import { FaBicycle } from "react-icons/fa";
 import { GiEcology } from "react-icons/gi";
 import { FaCompass } from "react-icons/fa";
 import { IoMdQrScanner } from "react-icons/io";
+import { CiLogout } from "react-icons/ci";
 
 const Home = () => {
   const [currentTime, setCurrentTime] = useState("");
@@ -54,6 +55,10 @@ const Home = () => {
               <IoPerson /> Profile
             </div>
           </div>
+					<div className={cl.logout}>
+						<CiLogout />
+						Exit
+					</div>
         </div>
 
         <div className={cl.content}>

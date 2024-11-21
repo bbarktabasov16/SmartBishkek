@@ -1,6 +1,6 @@
 .backCon {
 	background-color: #fff;
-	height: 130vh;
+	height: 100vh;
 	width: 100vw;
 	display: flex;
 	justify-content: center;
@@ -56,11 +56,11 @@
 
 .content {
 	padding: 30px 50px;
-	display: flex;
+	/* display: flex;
 	flex-direction: column;
-	justify-content: space-between;
+	justify-content: space-between; */
 	overflow: scroll;
-	height: 115vh;
+	/* height: 115vh; */
 }
 
 .content::-webkit-scrollbar {
@@ -182,4 +182,20 @@
 
 .recommended h2 {
 	font-size: 30px;
+}
+
+.explore, .adventures, .recommended {
+	margin: 50px 0;
+}
+
+.logout {
+	font-size: 30px;
+	position: absolute;
+	bottom: 20px;
+	left: 45px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 90px;
+	cursor: pointer;
 }
