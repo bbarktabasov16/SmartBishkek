@@ -70,48 +70,51 @@ function Auth() {
   };
 
   return (
-    <div className={Css.Block}>
-      <div className={Css.loginContainer}>
-        <div className={Css.loginCard}>
-          <div className={Css.logo}>
-            <img src={Logo} alt="EcoTourQuest Logo" />
-          </div>
-          <h1>in312</h1>
-          <p>Explore green destinations with rewards!</p>
-          <form onSubmit={handleLogin}>
-            <input
-              type="email"
-              placeholder="Email"
-              className={Css.inputField}
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <input
-              type="password"
-              placeholder="Password"
-              className={Css.inputField}
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            <a href="#" className={Css.forgotPassword}>
-              Forgot your password?
-            </a>
-            <button type="submit" className={Css.loginButton}>
-              Log in
-            </button>
-          </form>
-          <div className={Css.socialLogin}>
-            <hr />
-            <p>or</p>
-            <div className={Css.socialButtons}>
-              <button className={Css.googleButton} onClick={handleGoogleLogin}>
-                Google
-              </button>
+    <div className={Css.backCon}>
+
+      <div className={Css.Block}>
+        <div className={Css.loginContainer}>
+          <div className={Css.loginCard}>
+            <div className={Css.logo}>
+              <img src={Logo} alt="EcoTourQuest Logo" />
             </div>
+            <h1>in312</h1>
+            <p>Explore green destinations with rewards!</p>
+            <form onSubmit={handleLogin}>
+              <input
+                type="email"
+                placeholder="Email"
+                className={Css.inputField}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <input
+                type="password"
+                placeholder="Password"
+                className={Css.inputField}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <a href="#" className={Css.forgotPassword}>
+                Forgot your password?
+              </a>
+              <button type="submit" className={Css.loginButton}>
+                Log in
+              </button>
+            </form>
+            <div className={Css.socialLogin}>
+              <hr />
+              <p>or</p>
+              <div className={Css.socialButtons}>
+                <button className={Css.googleButton} onClick={handleGoogleLogin}>
+                  Google
+                </button>
+              </div>
+            </div>
+            <p className={Css.signuplink}>
+              No have an account? <Link to={'/reg'}>Create one account</Link>
+            </p>
           </div>
-          <p className={Css.signuplink}>
-            No have an account? <Link to={'/reg'}>Create one account</Link>
-          </p>
         </div>
       </div>
     </div>
