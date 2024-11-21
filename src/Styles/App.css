@@ -20,4 +20,15 @@ body {
 	height: 100vh;
 }
 
+.form-floating input {
+	width: 500px;
+	border-radius: 20px;
+}
+
+@media (max-width: 720px) {
+	.form-floating input {
+		width: 300px;
+	}
+}
+
 

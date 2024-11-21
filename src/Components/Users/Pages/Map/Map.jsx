@@ -20,6 +20,8 @@ const Map = () => {
     }
   };
 
+	
+
 	return (
 		<div className={cl.backCon}>
 			<div className={cl.container}>
@@ -50,7 +52,10 @@ const Map = () => {
           </div>
         </div>
         <div className={cl.content}>
-          
+					<div className={cl.title}>Карта</div>
+					<div className={cl.map}>
+
+					</div>
         </div>
       </div>
 		</div>
