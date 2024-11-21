@@ -292,6 +292,9 @@
 		justify-content: center;
 		align-items: center;
 	}
+	.icon:hover{
+		background-color: #d3d3d300;
+	}
 	.content{
 		padding: 10px 20px;
 	}

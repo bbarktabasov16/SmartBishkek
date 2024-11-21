@@ -20,15 +20,17 @@ import { ref } from "firebase/storage";
 
 const Home = () => {
   const [currentTime, setCurrentTime] = useState("");
-	const [userImage, setUserImage] = useState(JSON.parse(localStorage.getItem('userData')).photoURL);
+	const [userImage, setUserImage] = useState(JSON.parse(localStorage.getItem('userData2')).photoURL);
 
   const navigate = useNavigate()
-	console.log(JSON.parse(localStorage.getItem('userData')).photoURL)
+	// console.log(JSON.parse(localStorage.getItem('userData2')).photoURL)
 
   const handleLogout = async (navigate) => {
     try {
       await signOut(auth);
       navigate("/");
+      localStorage.removeItem('userData')
+      localStorage.removeItem('userData2')
     } catch (error) {
       console.log("ошибка при выходе");
     }
@@ -51,6 +53,7 @@ const Home = () => {
     if (label === "Scan") {
       // Действие при нажатии на "Scan"
       navigate("/scan");
+
     } else {
       alert(`Clicked on ${label}`);
     }
