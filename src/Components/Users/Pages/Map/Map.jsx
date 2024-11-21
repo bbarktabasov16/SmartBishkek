@@ -1,5 +1,5 @@
 import React from 'react'
-import cl from "./Search.module.css"
+import cl from "./Map.module.css"
 import { useNavigate } from 'react-router-dom'
 import { FaHome, FaMapMarked, FaSearchLocation } from 'react-icons/fa'
 import { IoPerson } from 'react-icons/io5'
@@ -7,7 +7,7 @@ import { CiLogout } from 'react-icons/ci'
 import { signOut } from 'firebase/auth'
 import { auth } from '../../../../firebase'
 
-const Search = () => {
+const Map = () => {
 	const navigate = useNavigate()
 	const handleLogout = async () => {
     try {
@@ -57,4 +57,4 @@ const Search = () => {
 	)
 }
 
-export default Search
+export default Map

@@ -20,17 +20,19 @@ import { ref } from "firebase/storage";
 
 const Home = () => {
   const [currentTime, setCurrentTime] = useState("");
-	const [userImage, setUserImage] = useState(JSON.parse(localStorage.getItem('userData2')).photoURL);
+  const [userImage, setUserImage] = useState(
+    JSON.parse(localStorage.getItem("userData2")).photoURL
+  );
 
-  const navigate = useNavigate()
-	// console.log(JSON.parse(localStorage.getItem('userData2')).photoURL)
+  const navigate = useNavigate();
+  // console.log(JSON.parse(localStorage.getItem('userData2')).photoURL)
 
   const handleLogout = async (navigate) => {
     try {
       await signOut(auth);
       navigate("/");
-      localStorage.removeItem('userData')
-      localStorage.removeItem('userData2')
+      localStorage.removeItem("userData");
+      localStorage.removeItem("userData2");
     } catch (error) {
       console.log("ошибка при выходе");
     }
@@ -53,7 +55,6 @@ const Home = () => {
     if (label === "Scan") {
       // Действие при нажатии на "Scan"
       navigate("/scan");
-
     } else {
       alert(`Clicked on ${label}`);
     }
@@ -70,18 +71,21 @@ const Home = () => {
     <div className={cl.backCon}>
       <div className={cl.container}>
         <div className={cl.Navbar}>
-          <div className={cl.logo}><span>Tourist</span><span>312</span></div>
+          <div className={cl.logo}>
+            <span>Tourist</span>
+            <span>312</span>
+          </div>
           <div className={cl.icons}>
             <div className={cl.icon}>
-              <FaHome /><li>Home</li>
+              <FaHome />
+              <li>Home</li>
             </div>
-          
-            <div className={cl.icon} onClick={() => navigate("/search")}>
-              <FaSearchLocation />  <li>Search</li>
 
+            <div className={cl.icon} onClick={() => navigate("/search")}>
+              <FaSearchLocation /> <li>Search</li>
             </div>
-            <div className={cl.icon}>
-              <FaMapMarked />  <li>Map</li>
+            <div className={cl.icon} onClick={() => navigate("/map")}>
+              <FaMapMarked /> <li>Map</li>
             </div>
             <div className={cl.icon} onClick={() => navigate("/profile")}>
               <IoPerson /> <li>Profile </li>
@@ -96,7 +100,11 @@ const Home = () => {
         <div className={cl.content}>
           <div className={cl.header}>
             <p>Current time: {currentTime}</p>
-            <img src={userImage || defaultUserImg} alt="User Profile" className={cl.user_img} />
+            <img
+              src={userImage || defaultUserImg}
+              alt="User Profile"
+              className={cl.user_img}
+            />
           </div>
 
           <section className={cl.explore}>
@@ -122,8 +130,6 @@ const Home = () => {
                   <p>Next eco event: May 23</p>
                 </div>
               </div>
-
-
             </div>
           </section>
 
@@ -154,9 +160,6 @@ const Home = () => {
                   <p>Next eco event: May 23</p>
                 </div>
               </div>
-
-
-
             </div>
           </section>
         </div>
