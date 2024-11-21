@@ -46,6 +46,13 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	cursor: pointer;
+	transition: 0.2s all;
+}
+
+.next:hover {
+	background-color: #4F45E4;
+	color: #212121;
 }
 
 .next svg {
