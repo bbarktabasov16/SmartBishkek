@@ -1,9 +1,34 @@
 * {
+	--second: #4F45E4;
+	--bgc:#171717;
 	padding: 0;
 	margin: 0;
 	box-sizing: border-box;
 }
 
 body {
-	background-color: #171717;
+	background-color: var(--bgc);
+}
+
+
+.App{
+	width: auto;
+	height: 100vh;
+	display: grid;
+	grid-template-rows: 1fr 10fr;
+	
+}
+
+.NavBar{
+	width: auto;
+	height: 100%;
+	background-color: var(--bgc);
+	z-index: 1000;
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); 
+}
+.section{
+	width: auto;
+	background-color: white;
+	height: 100%;
+	display: flex;
 }

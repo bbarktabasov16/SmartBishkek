@@ -1,19 +1,13 @@
+import './Styles/App.css'
+import Welcome from './Components/Users/Pages/Welcome/Welcome'
+import Auth from './Components/Users/auth/Auth';
 
-import Css from './Styles/App.module.css';
 
 function App() {
   return (
-    <div className={Css.App}>
-      <div className={Css.NavBar}> 
-
-      </div>
-      <div className={Css.Content}>
-
-      </div>
-      <div className={Css.FooterBar}>
-        
-      </div>
-
+    <div className='App'>
+      {/* <Auth/> */}
+     
     </div>
   );
 }
