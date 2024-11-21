@@ -33,6 +33,7 @@ function Auth() {
       setPassword('');
       setError('');
       navigate('/home');
+			localStorage.setItem('userData', user)
     } catch (error) {
       setError(error.message); // Если произошла ошибка, выводим ее
     }

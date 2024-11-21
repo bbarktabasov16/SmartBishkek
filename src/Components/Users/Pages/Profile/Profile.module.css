@@ -63,3 +63,7 @@
 	width: 90px;
 	cursor: pointer;
 }
+
+.image {
+	border-radius: 50%;
+}

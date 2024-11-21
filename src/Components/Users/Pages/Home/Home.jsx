@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import cl from "./Home.module.css";
 import user_img from "../../../../images/free-icon-user-847969.png";
+import defaultUserImg from "../../../../images/free-icon-user-847969.png";
 import { format } from "date-fns";
 import { FaHome } from "react-icons/fa";
 import { FaSearchLocation } from "react-icons/fa";
@@ -15,23 +16,24 @@ import { CiLogout } from "react-icons/ci";
 import { useNavigate } from "react-router-dom";
 import { signOut } from "firebase/auth";
 import { auth } from "../../../../firebase";
-
-
+import { ref } from "firebase/storage";
 
 const Home = () => {
   const [currentTime, setCurrentTime] = useState("");
+	const [userImage, setUserImage] = useState(JSON.parse(localStorage.getItem('userData')).photoURL);
 
+	console.log(JSON.parse(localStorage.getItem('userData')).photoURL)
 
   const handleLogout = async (navigate) => {
     try {
       await signOut(auth);
       navigate("/");
     } catch (error) {
-console.log('ошибка при выходе')
+      console.log("ошибка при выходе");
     }
   };
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   useEffect(() => {
     const updateTime = () => {
       const now = new Date();
@@ -44,6 +46,15 @@ console.log('ошибка при выходе')
 
     return () => clearInterval(intervalId);
   }, []);
+
+  const handleCategoryClick = (label) => {
+    if (label === "Scan") {
+      // Действие при нажатии на "Scan"
+      navigate("/scan");
+    } else {
+      alert(`Clicked on ${label}`);
+    }
+  };
 
   const categories = [
     { icon: <FaBicycle />, label: "Outdoor" },
@@ -61,26 +72,26 @@ console.log('ошибка при выходе')
             <div className={cl.icon}>
               <FaHome /> Home
             </div>
-            <div className={cl.icon}>
+            <div className={cl.icon} onClick={() => navigate("/search")}>
               <FaSearchLocation /> Search
             </div>
             <div className={cl.icon}>
               <FaMapMarked /> Map
             </div>
-            <div className={cl.icon}>
+            <div className={cl.icon} onClick={() => navigate("/profile")}>
               <IoPerson /> Profile
             </div>
           </div>
-					<div className={cl.logout} onClick={handleLogout}>
-						<CiLogout />
-						Exit
-					</div>
+          <div className={cl.logout} onClick={() => handleLogout(navigate)}>
+            <CiLogout />
+            Exit
+          </div>
         </div>
 
         <div className={cl.content}>
           <div className={cl.header}>
             <p>Current time: {currentTime}</p>
-            <img src={user_img} alt="User Profile" className={cl.user_img} />
+            <img src={userImage || defaultUserImg} alt="User Profile" className={cl.user_img} />
           </div>
 
           <section className={cl.explore}>
@@ -223,7 +234,10 @@ console.log('ошибка при выходе')
             <h2>Green Adventures</h2>
             <div className={cl.categories}>
               {categories.map((category, index) => (
-                <button key={index}>
+                <button
+                  key={index}
+                  onClick={() => handleCategoryClick(category.label)}
+                >
                   {category.icon} <br /> {category.label}
                 </button>
               ))}
